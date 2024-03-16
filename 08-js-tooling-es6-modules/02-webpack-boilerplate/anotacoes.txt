@@ -57,3 +57,12 @@ Esse é o nosso modelo, template, para utilizar webpack. Sempre que precisar usa
 aula. Mais uma vez, não é preciso ter a pasta "node_modules". Sem ele, basta digitar "npm install" no terminal
 (ou simplesmente "npm i"). Fazendo isso ele olha para package.json e instala todas as dependências na pasta node_modules
 novamente. Por isso "node_modules" pode ser ignorada pelo git.
+
+11) Correção: usaremos o core-js na versão 3, estava na versão 2. Além disso, vamos separar o core-js e o regenerator-
+runtime para ficarem como dependencies, e não devDependencies, já que eles são dependências do projeto, e não dependências
+para desenvolvimento.
+Logo, deleta-se as linhas do core-js e regenerator-runtime do package.json, apaga-se a pasta node_modules e dá 
+"npm install core-js regenerator-runtime". Para não salvar em devDependencies, basta não usar o "--save-dev".
+
+Além disso, é interessante apagar a pasta node_modules, porque esse template é para copiarmos em outros projetos, e aí
+se ficar copiando essa pasta, pode demorar mais.
