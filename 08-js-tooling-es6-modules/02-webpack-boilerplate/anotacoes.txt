@@ -1,0 +1,59 @@
+O webpack é quem vai ajudar a converter scripts modernos para scripts antigos. A configuração do webpack envolve
+muito node (coisa específica) e é meio grande. Para isso, cria-se um boilerplate pronto (um template, modelo) e
+só muda o que precisa.
+
+1) "npm init -y" para iniciar o node nessa pasta. Sem o "-y", ele pergunta o nome do pacote (geralmente o mesmo da pasta),
+qual a versão (padrão de 1.0.0), descrição do projeto, arquivo de entrada (padrão "index.js"), comando de teste,
+repositório do git, keywords, autor e licensa.
+
+2) "npm install --save-dev @babel/core @babel/cli @babel/preset-env babel-loader webpack webpack-cli regenerator-runtime core-js@2".
+- "install" ou "i" é a mesma coisa;
+- "--save-dev" para ficar apenas como dev dependecy, sem ir para produção (na produção só usa o bundle);
+- "@babel/core @babel/cli @babel/preset-env" para instalar o Babel;
+- "babel-loader" para ligar o webpack ao Babel;
+- "webpack" e "webpack-cli" para instalar o webpack;
+- "regenerator-runtime" e "core-js@2" para ativar os recursos mais novos do JS no Babel do webpack.
+Como está instalando várias coisas aqui, pode demorar um pouco mais.
+
+3) Criar um ".gitignore" para o git ignorar os módulos do node. Tira-se essa pasta porque, com o arquivo "package.json",
+pode-se dar um "npm install" e aí o npm vai ler esse arquivo, ver se tudo que está ali está instalado e, se não estiver,
+ele vai instalar automaticamente. Pode-se até apagar a pasta "node_modules" e rodar "npm install" (com o "package.json")
+que ele instala tudo de novo.
+
+4) O arquivo de configuração do webpack tem que ter exatamente o nome "webpack.config.js". Dar esse nome para o arquivo.
+Site do webpack: webpack.js.org.
+Com o arquivo, é preciso importar um módulo do node chamado "path", para trabalhar com caminhos no sistema.
+Esse arquivo é um módulo no node (como todo arquivo JS no node). Se não exportar nada desse arquivo, ninguém consegue
+usar nada desse arquivo fora dele. Por isso, é preciso usar o "module.exports".
+
+5) Podendo usar um sistema de módulos, não é mais necessário ficar trabalhando em um arquivo JS. Pode-se criar módulos
+para cada coisa (como classes). Para fazer isso, trabalha-se dentro de uma pasta que contenha todo o código fonte.
+Normalmente, essa pasta é chamada "src". 
+Isso porque se vai ter um arquivo público gerado pelo webpack. Num projeto maior, o webpack vai gerenciar imagens, CSS,
+Sass etc.
+
+6) Na pasta src, tem que haver um arquivo de entrada. Nesse caso, "index.js".
+
+7) Na pasta "public", tem tudo o que o usuário pode ver. Dentro dessa pasta, vai outra de "assets". Dentro de assets,
+tem uma outra "js" em que deve ir tudo de JS (inclusive o bundle). Isso é configurado no webpack.
+
+8) Depois de configurar o arquivo "webpack", é preciso criar um script em "package.json" para ele executar. Nesse caso,
+"gera": "webpack -w". O "-w" seria para o webpack ficar observando (watching) modificações nos arquivos para salvar no
+bundle. Esse script também fica executando.
+
+9) Para executar scripts de "package.json", é preciso usar "npm run [nome do script]". Nesse caso, "npm run gera".
+Ele já cria muita coisa no bundle.js, mesmo não tendo nada em index.js ainda.
+Não se mexe na pasta public (nos arquivos que o webpack gera, como o "bundle.js"), é nela que o webpack vai gerar as 
+coisas. Só se mexe no HTML.
+
+10) Uma boa prática é usar o comando "timeout" do Linux para garantir que o script não fica rodando mesmo depois de o 
+VS Code ter sido fechado. De 10 em 10 minutos, por exemplo, mata a execução do webpack (npm run gera).
+Nesse caso: "timeout 30 npm run gera", para executar "npm run gera" por 30 segundos. Pode-se aumentar o tempo.
+
+Com o "source-map", mesmo que o bundle seja minificado, ainda mostra no console.log de onde o comando ou erro vem no
+arquivo "index.js". O navegador nem sabe do arquivo original, embora dê pra ver ele direto do console (em "Sources").
+
+Esse é o nosso modelo, template, para utilizar webpack. Sempre que precisar usar webpack, podemos usar a pasta dessa
+aula. Mais uma vez, não é preciso ter a pasta "node_modules". Sem ele, basta digitar "npm install" no terminal
+(ou simplesmente "npm i"). Fazendo isso ele olha para package.json e instala todas as dependências na pasta node_modules
+novamente. Por isso "node_modules" pode ser ignorada pelo git.

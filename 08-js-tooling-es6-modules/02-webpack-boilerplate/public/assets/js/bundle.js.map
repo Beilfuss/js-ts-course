@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":"0cAGAA,QAAQC,IAAI,e,ssBAGHC,CAAA,GADI,U","sources":["webpack://02-webpack-boilerplate/./src/index.js"],"sourcesContent":["// 1\n// 2\n// 3\nconsole.log('Olá, mundo!');\n\nconst nome = 'Matheus';\nconst obj = {\n    ...nome\n}"],"names":["console","log","_objectSpread"],"sourceRoot":""}
