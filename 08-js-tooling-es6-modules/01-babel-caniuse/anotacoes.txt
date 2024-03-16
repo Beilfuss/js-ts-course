@@ -1,0 +1,60 @@
+Veremos a compatibilidade dos códigos com navegadores antigos, que não têm suporte a coisas mais novas do JS (ECMA JS).
+Para saber se um recurso do código é suportado em um navegador antigo, pode-se verificar no site "caniuse.com", que
+lista os navegadores e se são compatíveis ou não com algum código (palavra reservada, função etc.).
+Como fazer para se ter um único código que funcionasse em todos os navegadores perfeitamente? Pode-se utilizar o
+"babel.js.io", que é um transpilador: tradutor e compilador de código. Em "Try it out", marcar "Env Preset" como
+enabled. Após isso, basta digitar um código mais moderno na esquerda que na direita ele irá converter para um código
+mais antigo.
+O spread operator (...) é um ótimo exemplo de algo que se torna um código enorme no JS antigo.
+Vamos instalar isso no nosso projeto usando npm (gerenciador de pacotes do node) para ele fazer isso pra gente. Essa
+aula é só pra termos um entendimento de como o Babel funciona. Na verdade, não vamos utilizar o Babel, e sim o webpack,
+mas o webpack utiliza o Babel.
+
+Passos:
+1) Iniciar o gerenciador de pacotes do node (nessa pasta): npm init -y
+
+2) Arquivo "package.json" foi criado com informações sobre o projeto. Esse arquivo é quem vai gerenciar quais pacotes 
+do node precisamos para o projeto. Não vamos mexer nesse arquivo por enquanto;
+
+3) Instalar o Babel: npm install @babel/cli @babel/preset-env @babel/core
+Nesse caso, está-se instalando direto como dependência do projeto. Essa seria uma "dependência dev" (dev dependency),
+já que só utilizamos o Babel para desenvolver o sistema. Após isso, foi colocado no package.json o "babel" em 
+"dependencies", mas deveria ser "devDependencies". Porque outras pessoas podem não usar o Babel se não quiserem.
+Para fazer isso, basta usar o mesmo comando, mas com "--save-dev": npm install --save-dev @babel/cli @babel/preset-env @babel/core
+E aí, migra o Babel para "devDependencies.". Pode-se escolher a versão do Babel nesses comandos.
+
+4) Criar um ".gitignore" na raiz do projeto, porque agora foi criada uma pasta com os módulos do node ("node_modules"),
+e ela contém milhares de arquivos. Instalamos só o Babel, mas ele depende de várias outras coisas para funcionar, e 
+aí ele foi instalando todas extensões que o Babel precisa para funcionar.
+Para fazer isso, basta criar um arquivo com o nome ".gitignore" e colar nele o nome da pasta que quer que ele ignore.
+Com isso, essas pastas não vão para o repositório caso se faça um push disso.
+Também, foi criado um arquivo "package-lock.json" com tudo o que foi utilizado com versões.
+
+5) Para converter um script moderno para um antigo usando o Babel, o comando é o seguinte:
+npx babel [nome do arquivo] -o [arquivo de saída] [preset]
+Nesse caso: npx babel main.js -o bundle.js --presets=@babel/env
+Sem o "preset", ele não faz nada com o código (só copia para o novo arquivo).
+O arquivo é chamado de "bundle" porque ele pode ser a junção de vários outros arquivos.
+Em "bundle", pode-se ver que ele criou uma função para fazer o spread e outras funções para fazer o código funcionar.
+Se fôssemos usar em um sistema real, em vez de usarmos o script novo, moderno (main.js), utilizaríamos o bundle.js (no
+"index.html", por exemplo, linkaria o bundle.js em vez do main.js).
+Com isso, o código funcionaria em todos os navegadores, desde os mais antigos.
+
+6) Toda vez que fizer uma alteração no código, precisaria digitar o comando npx babel main.js -o bundle.js --presets=@babel/env
+Mas, pode-se fazer isso automaticamente: primeiro, vai no package.json; em "scripts", cria uma nova chave "babel" (por exemplo);
+e o comando: babel [nome do arquivo ou caminho relativo] -o [nome do arquivo de saída] [presets] -w.
+Nesse caso: babel ./main.js -o ./bundle.js --presets=@babel/env -w (não precisa do npx aqui).
+A flag "-w" faz com que toda vez que salvamos o arquivo "main.js", ele automaticamente recompila o bundle.
+
+7) Depois, "npm run babel" para rodar esse comando.
+Se quiser fazer uma alteração no arquivo de configuração (package.json), é preciso parar a execução desse comando e 
+executar ele novamente. Aí ele pega a configuração nova.
+Com o comando rodando, sempre que mudar algo em "main.js", atualiza em "bundle.js". É assim que se utiliza um transpilador.
+
+Na verdade, geralmente não se usa o Babel diretamente. "webpack" é mais utilizado (há outras ferramentas, mas ele é mais)
+usado. O webpack faz a mesma coisa, mas ele pode fazer isso com diversos tipos de arquivos (CSS, Sass). Usaremos o 
+webpack e "falaremos" para o webpack utilizar o Babel. O webpack não vai saber fazer a conversão que o Babel faz, mas
+ele faz muitas outras coisas interessantes.
+Não vamos usar o que foi visto nessa aula no dia a dia, vamos utilizar webpack ou alguma outra ferramenta que já faz
+tudo pra gente.
+Veremos como instalar webpack e configurar para ele utilizar o Babel para fazer essa conversão. 
