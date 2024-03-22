@@ -39,6 +39,11 @@ form input {
     padding: 0 20px;
 }
 
+.form-group {
+    display: flex;
+    justify-content: start;
+}
+
 form input:focus {
     outline: 1px solid var(--primary-color);
 }
