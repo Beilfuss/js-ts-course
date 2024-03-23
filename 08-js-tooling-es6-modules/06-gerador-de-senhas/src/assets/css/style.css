@@ -29,14 +29,12 @@ body {
 
 form input,  form label, form button {
     display: block;
-    width: 100%;
     margin-bottom: 10px;
 }
 
 form input {
     font-size: 24px;
-    height: 50px;
-    padding: 0 20px;
+    margin-left: 10px;
 }
 
 .form-group {
@@ -44,8 +42,16 @@ form input {
     justify-content: start;
 }
 
-form input:focus {
+#carac-quant:focus {
     outline: 1px solid var(--primary-color);
+}
+
+#carac-quant {
+    width: 60px;
+}
+
+#add-numbers, #capital-letters, #small-letters, #add-symbols {
+    width: 30px;
 }
 
 form button {
@@ -65,4 +71,10 @@ form button:hover {
 
 form button:active {
     background: #662111;
+}
+
+.quantity-error {
+    color: red;
+    font-size: 15px;
+    margin-left: 10px;
 }
