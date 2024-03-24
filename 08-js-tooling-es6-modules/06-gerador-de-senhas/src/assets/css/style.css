@@ -73,8 +73,14 @@ form button:active {
     background: #662111;
 }
 
-.quantity-error {
+.quantity-error, .checkboxes-error {
     color: red;
     font-size: 15px;
     margin-left: 10px;
+}
+
+.generated-password {
+    color: var(--primary-color);
+    font-size: 45px;
+    margin: 50px 0px;
 }
