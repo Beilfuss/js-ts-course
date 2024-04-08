@@ -21,3 +21,18 @@ Depois, há a versão do projeto. Automaticamente, a versão "1.0.0" é atribuí
 O resto é autoexplicativo.
 
 O foco será como instalar, desinstalar, fazer upgrade, downgrade de aplicações de terceiros, como módulos, pacotes, frameworks utilizando npm.
+
+Vamos usar o framework "express" como um software de terceiros de exemplo. Para instalá-lo, basta dar:
+
+- npm install express
+
+Esse comando instala o express na sua última versão. O "^" do lado esquerdo da versão em "package.json" indica que ele pode atualizar dentro da versão em que está para qualquer outra versão. Isso quer dizer que se os desenvolvedores do express lançarem uma versão posterior dele, ele será atualizado aqui também. Se quiser uma versão exata do express, basta adicionar uma flag "-E" antes do comando acima:
+
+- npm install express -E
+
+Esse comando remove o "^" e a versão do express nunca vai ser atualizada, vai ser sempre a versão do express naquele dia ou outra versão escolhida. Se quiser atualizar os pacotes, nesse caso, bastaria executar:
+
+- npm update
+
+Esse comando busca o que está atualizado e atualiza.
+
