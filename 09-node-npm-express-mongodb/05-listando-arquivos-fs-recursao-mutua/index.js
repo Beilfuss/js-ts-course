@@ -22,10 +22,20 @@ async function readdir(rootDir) { // função que retorna um caminho para não p
 
 async function walk(files, rootDir) { // função que caminha nos arquivos
     for(let file of files) {
-        const fileFullPath = path.resolve(rootDir, file); // compõe o caminho de acordo com "rootDir" e os arquivos dentro dessa pasta
-        const stats = await fs.stat();
-        console.log(file, stat.isDirectory());
+        const fileFullPath = path.resolve(rootDir, file); // compõe o caminho do arquivo de acordo com "rootDir" e os arquivos dentro dessa pasta
+        const stats = await fs.stat(fileFullPath); // "fs.stat" coleta dados sobre o arquivo
+        
+        if (/\.git/g.test(fileFullPath)) continue; // se tiver ".git" no caminho da pasta, não faz nada, só continua
+        if (/node_modules/g.test(fileFullPath)) continue; // se tiver "node_modules" no caminho da pasta, não faz nada, só continua
+
+        if (stats.isDirectory()) { // "se o arquivo for um diretório, execute 'readdir' para listar os arquivos dentro do diretório"
+            readdir(fileFullPath);
+            continue; // continue para ele não logar os diretórios (volta pro "for")
+        }
+
+        console.log(file, stats.isDirectory()); // retorna "true" se for um diretório, "false" se não for
+        // console.log(fileFullPath); // mostra os caminhos das pastas
     }
 }
 
-readdir(''); // inserir o caminho de root até a pasta atual aqui
+readdir(''); // inserir o caminho de root até a pasta atual aqui (rodar "pwd" no terminal)
