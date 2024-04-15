@@ -9,3 +9,5 @@ Para tal, precisaremos do módulo "fs" e do módulo "path". O "path" é só para
 O FS tem dois tipos de função para todas elas. Por exemplo, "readdir" e "readdirSync". Há uma função assíncrona e uma síncrona. A função síncrona não deixa continuar executando até ela terminar.
 Nesse caso, não utilizaremos nem uma ou outra, vamos utilizar promises, com ".promises" no final do require do fs.
 Com isso, pode-se usar promises para esperar. Dessa forma, o fs começa a operação e retorna quando ele terminar, sem parar a execução do resto do código.
+
+O FS tem várias funções para manipular arquivos: apagar, criar, listar etc. Há muitas funções em relação ao sistema de arquivos.

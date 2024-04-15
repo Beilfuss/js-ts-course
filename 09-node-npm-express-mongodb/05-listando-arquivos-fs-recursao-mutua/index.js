@@ -27,14 +27,18 @@ async function walk(files, rootDir) { // função que caminha nos arquivos
         
         if (/\.git/g.test(fileFullPath)) continue; // se tiver ".git" no caminho da pasta, não faz nada, só continua
         if (/node_modules/g.test(fileFullPath)) continue; // se tiver "node_modules" no caminho da pasta, não faz nada, só continua
-
+        
         if (stats.isDirectory()) { // "se o arquivo for um diretório, execute 'readdir' para listar os arquivos dentro do diretório"
             readdir(fileFullPath);
             continue; // continue para ele não logar os diretórios (volta pro "for")
         }
 
-        console.log(file, stats.isDirectory()); // retorna "true" se for um diretório, "false" se não for
-        // console.log(fileFullPath); // mostra os caminhos das pastas
+        if (
+            !/\.css$/g.test(fileFullPath) && !/\.html$/g.test(fileFullPath) // se o arquivo não for CSS e não for HTML, continua (para listar só arquivos CSS e HTML)
+        ) continue; 
+
+        // console.log(file, stats.isDirectory()); // retorna "true" se for um diretório, "false" se não for
+        console.log(fileFullPath); // mostra os caminhos das pastas
     }
 }
 
