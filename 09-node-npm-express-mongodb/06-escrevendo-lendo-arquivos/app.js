@@ -30,7 +30,8 @@ console.log(dadosArquivo); // "Promise { <pending> }" porque sempre que se cria 
 */
 
 function renderizaDados(dados) {
-    console.log(dados);
+    dados = JSON.parse(dados); // transforma os dados do JSON de volta em objeto
+    dados.forEach(valor => console.log(valor)); // loga cada objeto em "dados"
 }
 
-leArquivo(caminhoArquivo); 
+leArquivo(caminhoArquivo);
