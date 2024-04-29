@@ -54,4 +54,33 @@ function meuMiddleware(req, res, next) {
 
 Com isso, essa requisição chega até o último Middleware. Isso também é poderoso, porque se pode fazer coisas no meio do caminho da requisição, ou antes ou depois de responder o cliente.
 
-Agora, veremos outra forma de trabalhar com middlewares. Vamos trabalhar no server com todas as rotas: todas as rotas que forem requisitadas vão passar pelo middleware do server.js. Se tiver muitos middlewares, ou o middleware ficar muito grande, pode-se criar em "rc" uma pasta "middlewares" com todos os middlewares.
+Agora, veremos outra forma de trabalhar com middlewares. Vamos trabalhar no server com todas as rotas: todas as rotas que forem requisitadas vão passar pelo middleware do server.js. Se tiver muitos middlewares, ou o middleware ficar muito grande, pode-se criar em "src" uma pasta "middlewares" com todos os middlewares.
+
+Se quiser chamar esse middleware em todas as requisições (todas as requisições do site vão ter que passar por esse middleware), basta declarar:
+
+- app.use(meuMiddleware);
+
+Sendo que "meuMiddleware" é o middleware pelo qual se quer que todas as requisições passem. Com isso, todas as requisições em todas as rotas e com todos os verbos vão passar por esse middleware.
+
+Se nesse middleware global quiser interceptar toda vez que alguém postar algum formulário com um campo "cliente", basta declarar:
+
+```
+module.exports = (req, res, next) => {
+    // console.log('Passei no middleware global.');
+
+    if (req.body.cliente) {
+        console.log();
+        console.log(`Vi que você postou ${req.body.cliente}`);
+        console.log();
+    }
+    next();
+}
+```
+
+Isso funciona, também, porque "post" está sendo tratado em "routes.js":
+
+- route.post('/', homeController.trataPost);
+
+## Importante
+
+- Não esquecer do "next" dentro do middleware, senão a requisição não termina;
