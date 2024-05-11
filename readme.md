@@ -5,5 +5,14 @@
 
 ## Tecnologias já estudadas:
 
-- [ ] JavaScript;
+- [x] JavaScript;
+- [x] Axios;
+- [x] Babel;
+- [x] Core-js;
+- [x] Webpack;
+- [x] Node.js;
+- [x] NPM;
+- [x] Nodemon;
+- [x] Express;
+- [ ] MongoDB;
 - (Loading...).
