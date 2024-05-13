@@ -1,11 +1,13 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express(); // executa o express
 
 const mongoose = require('mongoose');
-const connectionString = '';
-mongoose.connect(connectionString)
+
+mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
-        console.log('Conectei à base de dados.');
+        // console.log('Conectei à base de dados.');
         app.emit('pronto');
     })
     .catch(e => console.log(e));

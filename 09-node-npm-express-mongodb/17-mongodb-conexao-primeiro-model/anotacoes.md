@@ -25,7 +25,7 @@ const mongoose = require('mongoose');
 mongoose.connect();
 ```
 
-Dentro de "connect()", é preciso mandar os dados da conexão. Para isso, basta mandar a connection string do cluster do MongoDB Atlas. Para isso, basta ir no cluster, clicar em connect, "connect your applicaton" e copiar a connection string. Depois, só precisa alterar o "password". Pode-se colocar a string em uma variável e passar ela para o connect:
+Dentro de "connect()", é preciso mandar os dados da conexão. Para isso, basta mandar a connection string do cluster do MongoDB Atlas. Para isso, basta ir no cluster, clicar em connect, "connect your applicaton" e copiar a connection string. Depois, só precisa alterar o "password" (e, se quiser, o nome do banco de dados, que aí vai entre "/" e "?retryWrites"). Pode-se colocar a string em uma variável e passar ela para o connect:
 
 ```
 mongoose.connect(connectionString);
@@ -54,3 +54,58 @@ app.on('pronto', () => {
 Assim, quando aplicativo estiver pronto, passa a função "app.listen". Agora, a conexão só vai ocorrer quando "app" emitir o sinal "pronto". Isso para não ouvir nada enquanto a conexão com a base de dados não for realizada (para evitar que o usuário acesse algo sem sucesso).
 
 O mongoose.connect retorna uma promise. Quando ela deixar de ser pending, resolvida ou rejeitada, faz o app emitir um sinal e aí manda ele escutar na porta 3000.
+
+Para evitar que a string de conexão com o BD vá para o repositório, utilizaremos o dotenv. Para tal, chama-se ele:
+
+- require('dotenv').config();
+
+Além disso, é preciso criar um arquivo na raiz do projeto chamado "**.env**". Esse arquivo vai conter pares chave-valor, como:
+
+- CHAVE=VALOR
+
+Assim, cria-se uma entrada "CONNECTIONSTRING" neste arquivo, cola-se a string no arquivo .env e passa "process.env.CONNECTIONSTRING" no mongoose.connect:
+
+```
+mongoose.connect(process.env.CONNECTIONSTRING)
+    .then(() => {
+        console.log('Conectei à base de dados.');
+        app.emit('pronto');
+    })
+    .catch(e => console.log(e));
+```
+
+Após isso, **adicionando o .env no .gitignore**, nenhuma informação sensível é enviada ao servidor.
+
+Para criar um model exemplo, vamos em src e criamos a pasta "**models**". Dentre dele, criamos o model "HomeModel.js". Com letra maiúscula porque geralmente o módulo é uma classe. No arquivo, colocamos o schema do model. Com isso, pode-se selecionar coisas do BD, criar coisas nele etc.
+
+Para criar um model na base de dados, basta executar:
+
+```
+HomeModel.create({
+    titulo: 'Um título de testes',
+    descricao: 'Uma descrição de testes'
+});
+```
+
+Isso vai retornar uma promise e o documento criado. Para "recapturar" esse documento, basta acrescentar o .then. E para tratar algum erro, .catch:
+
+```
+HomeModel.create({
+    titulo: 'Um título de testes',
+    descricao: 'Uma descrição de testes'
+})
+    .then(dados => console.log(dados))
+    .catch(e => console.log(e));
+```
+
+Agora, basta testar e dar um "refresh" no MongoDB Atlas. Os models criados na base de dados vão ficar em "collections" no MongoDB Atlas.
+
+Para buscar em vez de criar, basta trocar "create" por "find":
+
+```
+HomeModel.find()
+    .then(dados => console.log(dados))
+    .catch(e => console.log(e));
+```
+
+Nesse caso, porque não se especificou nada no find, retorna todos os dados. Mas, raramente se usa isso dessa maneira.
