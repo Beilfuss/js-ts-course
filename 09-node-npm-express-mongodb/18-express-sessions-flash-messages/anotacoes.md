@@ -1,0 +1,2 @@
+Nessa aula vamos ativar as sessions para o express: salvar os dados do navegador no servidor. Com esse **cookie**, toda vez que o cliente acessar a aplicação, junto com a requisição dele vai o cookie, aí o servidor verifica se ele tem acesso e, se tiver, deixa entrar.
+Isso para login, mas sessões podem ser usadas para salvar o que quiser.
