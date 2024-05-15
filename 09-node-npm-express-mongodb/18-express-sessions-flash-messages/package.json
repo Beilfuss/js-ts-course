@@ -1,5 +1,5 @@
 {
-  "name": "17-mongodb-conexao-primeiro-model",
+  "name": "18-express-sessions-flash-messages",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
