@@ -1,8 +1,8 @@
 exports.paginaInicial = (req, res) => {
-    req.flash('info', 'Olá, mundo!');
-    req.flash('error', 'Olá, mundo!');
-    req.flash('success', 'Olá, mundo!');
-    res.render('index');
+    res.render('index', {
+        titulo: 'Esse será o título da página',
+        numeros: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    });
 };
 
 exports.trataPost = (req, res) => {
