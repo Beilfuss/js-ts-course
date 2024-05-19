@@ -27,3 +27,14 @@ Com isso, todas as rotas recebe essa variável (ou objeto, função etc.). Pode-
 
 ## Como acessar os dados no template?
 
+O EJS tem umas tags de template para isso. No h1 de "index.ejs", se quisermos exibir o "titulo" do objeto dentro de "paginaInicial" no "homeController", basta acrescentar o código abaixo dentro das tags h1:
+
+```
+<h1>
+
+    <%= titulo %>
+
+</h1>
+```
+
+"<%= %>" é a sintaxe do EJS. Com isso, o título já deve ser renderizado na tela.
