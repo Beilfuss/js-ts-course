@@ -39,10 +39,9 @@ O EJS tem umas tags de template para isso. No h1 de "index.ejs", se quisermos ex
 
 "<%= %>" é a sintaxe do EJS. Com isso, o título já deve ser renderizado na tela.
 
-Há tags diferentes para diferentes coisas. O sinal de "=" deixa utilizar tags dentro do que renderiza, enquanto o sinal de "-", não:
+Há tags diferentes para diferentes coisas. O sinal de "=" não deixa utilizar tags dentro do que renderiza (utilizado quando o conteúdo é HTML), enquanto o sinal de "-", deixa:
 
 ```
-
 exports.paginaInicial = (req, res) => {
     res.render('index', {
         titulo: 'Esse será o <span style = "color: red;">título</span> da página',
@@ -58,5 +57,98 @@ exports.paginaInicial = (req, res) => {
 <%- titulo %>
 
 </h1>
+```
+
+## Controle de fluxo
+
+Digamos que seja necessário verificar se a variável "título" foi enviada. Para tal, basta acrescentar um if no próprio ejs:
+
+```
+ <h1>
+
+    <%  %>
+
+</h1>
+```
+
+O sinal de controle de fluxo é simplesmente "<% %>".
+
+## forEach com ejs
+
+```
+<h1>
+
+    <% numeros.forEach(num => { %>
+        <%= num %><br>
+    <% }); %>
+
+</h1>
+```
+
+## Como fazer "includes"
+
+No HTML, normalmente se trabalha apenas no body. Ou seja, o <head> geralmente não muda. Logo, pode-se pegar os trechos que não mudam, separá-los em arquivos menores e incluir eles em outras páginas.
+Para fazer isso, copia-se as partes para incluir em outras partes e se cola elas em um arquivo em uma pasta chamada "includes" dentro de "views". Todos os arquivos a serem incluídos no HTML ficam nessa pasta.
+Depois, basta usar as tags do EJS para incluir outras partes de HTML nos arquivos que se quer:
+
+```
+<%- include('includes/head'); %>
+    <section class="container">
+      <h1>Lorem ipsum</h1>
+      <form action="/" method="post">
+        <label for="cliente">Cliente</label>
+        <input type="text" name="cliente">
+        <button>Submit</button>
+      </form>
+    </section>
+
+<%- include('includes/footer'); %>
+```
+
+E aí, para cada página que se criar, copia-se esse trecho inteiro e só edita a parte do meio. O que for padrão em todas as páginas já está pronto. Um menu, por exemplo, ficaria o mesmo em todos as páginas.
+
+É possível, também incluir variáveis de middlewares:
+
+```
+<%- include('includes/head'); %>
+    <section class="container">
+      <h1> <%= umaVariavelLocal %> </h1>
+      <form action="/" method="post">
+        <label for="cliente">Cliente</label>
+        <input type="text" name="cliente">
+        <button>Submit</button>
+      </form>
+    </section>
+
+<%- include('includes/footer'); %>
+
+=====
+
+exports.middlewareGlobal = (req, res, next) => {
+    res.locals.umaVariavelLocal = 'Este é o valor da variável local.';
+    next();
+}
+```
+
+Essa variável vai estar disponível em todas as páginas, porque está em um middleware sem rota em "server.js". Se colocasse uma rota para esse middleware, ela só estaria disponível nessa rota.
+
+## Tags do EJS
+
+- <% Controle de fluxo (if, for...) %>
+- <%= Imprime "escapando" caracteres %>
+- <%- Imprime sem "escapar" caracteres %>
+- <%# Comentário %>
+- <%- include('caminho/arquivo'); %>
+
+### Exemplo de controle de fluxo
+
+Não esquecer de abrir e fechar as tags do EJS:
+
+```
+<% if (algumacoisa) { %>
+    <%= exibe alguma coisa %>
+<% } else { %>
+    <%= exibe outra coisa %>
+<% } %>
 ```
 
