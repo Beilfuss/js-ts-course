@@ -9,5 +9,6 @@ route.get('/', homeController.index); // "use a função 'index' do 'homeControl
 
 // Rotas de login
 route.get('/login/index', loginController.index); // pode-se omitir "index"
+route.post('/login/register', loginController.register);
 
 module.exports = route;

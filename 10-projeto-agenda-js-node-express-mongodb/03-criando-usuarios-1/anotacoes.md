@@ -24,3 +24,9 @@
 - Funcionalidade de cadastrar usuário;
     - Validando e-mail;
     - Criptografando a senha.
+- Criou-se a rota de registro;
+- Passou-se os dados do loginController para LoginModel;
+- Validou-se os dados em LoginModel;
+    - Usou-se o pacote "validator" para isso: npm i validator.
+- Registrou-se o usuário na base de dados;
+- Adicionou-se flash messages de erro e de sucesso.

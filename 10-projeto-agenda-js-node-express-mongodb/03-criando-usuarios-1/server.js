@@ -18,13 +18,13 @@ const flash = require('connect-flash'); // mensagens autodestrutivas: assim que 
 const routes = require('./routes'); // rotas da nossa aplicação (/home, /contato etc.)
 const path = require('path'); // para trabalhar com caminhos
 
-const helmet = require('helmet'); // recomendação do Express para deixar a aplicação mais segura
+// const helmet = require('helmet'); // recomendação do Express para deixar a aplicação mais segura
 const csrf = require('csurf'); // CSRF tokens para os formulários (todos têm que ter um token), para que nenhum site externo consiga postar coisas para dentro da nossa aplicação
 
 const { middlewareGlobal, outroMiddleware, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware'); // middlewares: funções executadas antes ou depois de responder o cliente em uma rota específica
 // pode-se ter vários middlewares executando um após o outro até a resposta ser dada ao usuário
 
-app.use(helmet()); // usando o helmet
+// app.use(helmet()); // usando o helmet
 
 app.use(express.urlencoded( { extended: true } )); // permite postar formulários para dentro da aplicação
 
