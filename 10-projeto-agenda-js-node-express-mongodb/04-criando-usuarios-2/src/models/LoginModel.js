@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcryptjs = require('bcryptjs');
 
 const LoginSchema = new mongoose.Schema({
     email: { type: String, required: true }, // criando um objeto do tipo string e obrigatório
@@ -17,15 +18,24 @@ class Login {
 
     async register() { // Para fazer operações de bases de dados, precisamos trabalhar com promises, por isso o async
         this.valida();
-        if(this.errors.length > 0) return;
+        if(this.errors.length > 0) return; // não passa daqui caso ocorra qualquer erro nos dados do formulário
+
+        await this.userExists(); // await porque vai esperar mexer na base de dados
+        if(this.errors.length > 0) return; // não passa daqui caso o usuário já exista
+
+        const salt = bcryptjs.genSaltSync();
+        this.body.password = bcryptjs.hashSync(this.body.password, salt); // hash da senha com a senha e um salt
 
         try { // sem o try catch, a promise fica sem resolver e o programa para
             this.user = await LoginModel.create(this.body); // objeto registrado só com e-mail e password
         } catch(err) {
             console.log(err);
         }
+    }
 
-        
+    async userExists() { // async porque vai mexer na base de dados
+        const user = await LoginModel.findOne({ email: this.body.email }); // await porque vai esperar mexer na base de dados. Retorna ou usuário ou "null"
+        if(user) this.errors.push('Usuário já existe');
     }
 
     valida() {

@@ -35,4 +35,5 @@
 
 - Fez-se hash das senhas;
     - npm i bcryptjs
-    
+- Antes de registrar o usuário, fez-se hash da senha com a senha e um salt;
+- Verificou-se se usuário já não está na base de dados;
