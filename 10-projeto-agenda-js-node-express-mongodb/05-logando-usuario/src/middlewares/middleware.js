@@ -1,6 +1,7 @@
 exports.middlewareGlobal = (req, res, next) => {
     res.locals.errors = req.flash('errors'); // em todas as páginas, essa variável vai ficar disponível. "req.flash" captura as mensagens de erros
     res.locals.success = req.flash('success');
+    res.locals.user = req.session.user;
     next();
 }
 

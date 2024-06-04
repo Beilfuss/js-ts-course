@@ -16,6 +16,24 @@ class Login {
         this.user = null;
     }
 
+    async login() {
+        this.valida();
+        if(this.errors.length > 0) return; // não passa daqui caso ocorra qualquer erro nos dados do formulário
+        this.user = await LoginModel.findOne({ email: this.body.email }); // await porque vai esperar mexer na base de dados. Retorna ou usuário ou "null"
+
+        if(!this.user) {
+            this.errors.push('Usuário não existe.');
+            return;
+        }
+
+        if(!bcryptjs.compareSync(this.body.password, this.user.password)) { // compara se a senha que veio é igual da base de dados
+            this.errors.push('Senha inválida.');
+            this.user = null;
+            return;
+        }
+
+    }    
+
     async register() { // Para fazer operações de bases de dados, precisamos trabalhar com promises, por isso o async
         this.valida();
         if(this.errors.length > 0) return; // não passa daqui caso ocorra qualquer erro nos dados do formulário
@@ -30,8 +48,8 @@ class Login {
     }
 
     async userExists() { // async porque vai mexer na base de dados
-        const user = await LoginModel.findOne({ email: this.body.email }); // await porque vai esperar mexer na base de dados. Retorna ou usuário ou "null"
-        if(user) this.errors.push('Usuário já existe');
+        this.user = await LoginModel.findOne({ email: this.body.email }); // await porque vai esperar mexer na base de dados. Retorna ou usuário ou "null"
+        if(this.user) this.errors.push('Usuário já existe');
     }
 
     valida() {

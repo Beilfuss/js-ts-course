@@ -41,4 +41,14 @@
 ### Aula 05 - Logando o usuário
 
 - Adicionou-se um link que redireciona para a tela de Cadastro/Login;
-- 
+- Criou-se uma função de login em loginController e em LoginModel;
+- Em LoginModel, verificou-se se o usuário existe e se a senha inserida é igual à da base de dados;
+- Em loginController, criou-se uma sessão para o usuário;
+- Para debugar a sessão: console.log(req.session.user);
+    - Com isso, é possível ver os dados do usuário na sessão;
+    - Esse log foi colocado antes do render da página de login no loginController.
+- Colocou-se essa sessão para dentro das páginas usando o middleware global;
+    - res.locals.user = req.session.user;
+- Criou-se uma rota de logout;
+    - Criou-se botões de sair e entrar.
+- Mudou-se a página quando entra.

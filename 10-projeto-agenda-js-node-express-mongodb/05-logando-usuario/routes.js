@@ -11,5 +11,6 @@ route.get('/', homeController.index); // "use a função 'index' do 'homeControl
 route.get('/login/index', loginController.index); // pode-se omitir "index"
 route.post('/login/register', loginController.register);
 route.post('/login/login', loginController.login);
+route.get('/login/logout', loginController.logout);
 
 module.exports = route;
