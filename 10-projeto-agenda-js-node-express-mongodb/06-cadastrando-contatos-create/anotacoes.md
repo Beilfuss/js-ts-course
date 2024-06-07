@@ -55,9 +55,17 @@
 
 ### Aula 06 - Cadastrando contatos (Create)
 
-- Criou-se uma rota para cadastrar contato;
+- Criou-se uma rota get para a página de cadastrar contato;
 - Criou-se o "contatoController";
 - Criou-se uma página EJS com o formulário para cadastro do contato;
-- Restringiu-se o acesso à página de registro de contato apenas para usuários logados.
+- Restringiu-se o acesso à página de registro de contato apenas para usuários logados;
     - Criou-se um middleware que checa se existe o user na sessão;
     - O middleware "loginRequired" pode ser usado em qualquer página que se queira que não esteja acessível para quem não está logado.
+- Criou-se uma rota post para o registro do usuário;
+    - No "contatoController", criou-se uma função "register" para essa rota;
+    - Essa função só recebe os dados e salva na base de dados.
+- Criou-se um model "ContatoModel" para salvar os contatos;
+    - O de Login foi criado com classe, esse de contato foi criado com uma constructor function;
+    - Tratou-se os dados com "cleanUp" e "valida" também para o "ContatoModel".
+- Validou-se os dados de contato antes de criá-lo;
+- Criou-se uma rota para redirecionar para a edição do contato logo após criá-lo.
