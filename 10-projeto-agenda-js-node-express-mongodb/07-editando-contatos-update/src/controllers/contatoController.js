@@ -38,22 +38,21 @@ exports.editIndex = async function(req, res) { // porque "buscaPorId" é async
 
 exports.edit = async function(req, res) {
     try{
-
+        if(!req.params.id) return res.render('404'); // se não for enviado o parâmetro, já para por aqui
+        const contato = new Contato(req.body);
+        await contato.edit(req.params.id);
+    
+        if(contato.errors.length > 0) {
+            req.flash('errors', contato.errors);
+            req.session.save(() => res.redirect('back')); // redireciona para a página anterior, "back"
+            return;
+        }
+    
+        req.flash('success', 'Contato editado com sucesso');
+        req.session.save(() => res.redirect(`/contato/index/${contato.contato._id}`));
+        return;
     } catch(e) {
         console.log(e);
         res.render('404');
     }
-    if(!req.params.id) return res.render('404'); // se não for enviado o parâmetro, já para por aqui
-    const contato = new Contato(req.body);
-    await contato.edit(req.params.id);
-
-    if(contato.errors.length > 0) {
-        req.flash('errors', contato.errors);
-        req.session.save(() => res.redirect('back')); // redireciona para a página anterior, "back"
-        return;
-    }
-
-    req.flash('success', 'Contato editado com sucesso');
-    req.session.save(() => res.redirect(`/contato/index/${contato.contato._id}`));
-    return;
 }
