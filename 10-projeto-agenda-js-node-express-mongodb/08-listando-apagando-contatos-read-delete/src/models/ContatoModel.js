@@ -78,7 +78,7 @@ Contato.buscaContatos = async function() { // função estática: não precisa i
 
 Contato.delete = async function(id) {
     if(typeof id != 'string') return;
-    const contato = await ContatoModel.findOneAndDelete(id); // recebe o id e já apaga o contato
+    const contato = await ContatoModel.findOneAndDelete({ _id: id }); // "findOneAndDelete" recebe um objeto de filtro, para filtrar o que quer deletar
     return contato;
 };
 
