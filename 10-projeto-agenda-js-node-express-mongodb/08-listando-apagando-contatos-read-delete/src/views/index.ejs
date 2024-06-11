@@ -11,6 +11,7 @@
 
       <%- include('includes/messages') %>
 
+      <% if(contatos.length > 0) { %>
       <div class="responsive-table">
         <table class="table my-3">
           <% contatos.forEach(contato => { %>
@@ -25,6 +26,9 @@
           <% }); %>
         </table>
       </div>
+      <% } else { %>
+        <p class="text-center lead">Não existem contatos na sua agenda.</p>
+      <% } %>
 
     </div>
 

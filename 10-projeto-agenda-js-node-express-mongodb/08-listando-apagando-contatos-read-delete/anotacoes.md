@@ -83,4 +83,6 @@
     - Método pode ser estático (sem "this");
     - Métodos estáticos não vão para o prototype, não têm acesso à palavra "this".
 - Listou-se os contatos dinamicamente na página inicial, possibilitando a edição deles já por ali;
-- 
+- Criou-se uma rota "delete";
+- Criou-se uma função "delete" em "contatoController" e em "ContatoModel";
+- Até agora, validamos só no backend, mas o ideal é validar no frontend, backend e na base de dados.

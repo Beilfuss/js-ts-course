@@ -56,3 +56,15 @@ exports.edit = async function(req, res) {
         res.render('404');
     }
 }
+
+exports.delete = async function(req, res) { // async porque vai mexer na base de dados
+    if(!req.params.id) return res.render('404'); // precisa do parâmetro
+
+    const contato = await Contato.delete(req.params.id); // precisa do contato
+
+    if(!contato) return res.render('404'); // se não tiver o contato, retorna 404
+    
+    req.flash('success', 'Contato apagado com sucesso');
+    req.session.save(() => res.redirect('back'));
+    return;
+}
