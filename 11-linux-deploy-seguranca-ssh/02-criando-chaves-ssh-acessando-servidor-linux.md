@@ -8,3 +8,11 @@
     - Adicionar uma senha (opcional);
     - Agora, deve-se ter um arquivo "cursojs" e outro "cursojs.pub" na pasta "./ssh";
     - Copiar a chave pública após executar "cat [caminho da chave pública].
+- No Google Cloud Platform, ir em "Metadados" e adicionar a nova chave;
+- Com isso, já se tem uma chave SSH que permite acessar o servidor;
+    - Para isso, vai-se em "Instâncias de VM";
+    - Copia-se o IP do servidor;
+    - No terminal, executa-se: "ssh [usuario]@[ip do servidor].
+- Depois de feita a conexão, já se está dentro da máquina do servidor.
+    - Executar "sudo apt update" e "sudo apt upgrade" para atualizar os pacotes do servidor.
+- Para sair do servidor, basta executar um "exit".
