@@ -6,10 +6,20 @@
     - No próprio Git Bash, executar "ssh-keygen", digitar nome da chave e senha da chave;
     - Executar "eval $(ssh-agent)";
     - Executar "ssh-add ~/.ssh/id_rsa" (ou o nome escolhido para a chave). Isto para adicionar a chave criada ao SSH como sendo a chave deste usuário;
-    - Os dois últimos comandos acima vão ter que ser executados toda vez que reiniciar o Windows.
+    - **Os dois últimos comandos acima vão ter que ser executados toda vez que reiniciar o Windows**.
 - Copiar o conteúdo de "~/.ssh/id_rsa.pub" ou [nome escolhido para a chave].pub;
 - Ir em "Metadados" -> "Chaves SSH" -> "Adicionar chave SSH".
     - Colar a chave SSH e salvar.
     - Agora, este usuário do Windows tem acesso ao servidor.
 - Acessando o servidor.
-    - 
+    - Ir em "Instâncias de VM", copiar o IP do servidor (por isso é importante o IP ser estático);
+    - Ir no Git Bash e executar "ssh [ip do servidor]". Assim já vai acessar;
+    - Se quiser, já pode mandar o usuário junto, mas não é necessário, porque isso é enviado automaticamente: "ssh [usuario]@[ip do servidor];
+    - Nesse momento, já está dentro do servidor do Google.
+- Depois de feita a conexão, executar "sudo apt update" e depois "sudo apt upgrade" para atualizar os pacotes do servidor;
+    - O servidor pode pedir para executar, também, "sudo apt autoremove".
+- Reiniciar o server usando "sudo reboot";
+- Para sair do servidor, pode-se executar "exit" também.
+- Para saber se o servidor está no ar, pode-se executar "ping [ip do servidor]";
+- Ao reiniciar o servidor, pode demorar um pouco para conseguir fazer a conexão ssh novamente;
+- Cuidado para não editar coisas no servidor achando que está na máquina local e vice e versa.
