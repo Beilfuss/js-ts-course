@@ -33,6 +33,8 @@
     - Clicar em "Executar" na mensagem;
     - Reiniciar a máquina e verificar que ela muda o tamanho.
 
+- **Observação**: normalmente, não se usa VMs como servidores para projetos de desenvolvimento, e sim Docker. Fizemos assim dessa vez para aprendizado.
+
 ### Configurando o servidor
 
 - Veremos a mesma coisa que fizemos com o Google Cloud Platform, mas em uma VM Ubuntu;
