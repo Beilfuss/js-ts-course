@@ -1,6 +1,39 @@
 ## Criando e configurando servidor Ubuntu em uma máquina virtual
 
+### Instalando o Ubuntu no VirtualBox - [Videoaula no YouTube](https://www.youtube.com/watch?v=Vl6f8_vin9M)
 
+- Abrir o VirtualBox;
+- Ir em "Novo";
+- Digitar o nome do SO em "nome", conferir as opções e clicar em próximo;
+- Selecionar a quantidade de memória que o sistema poderá usar;
+    - Para nosso caso, 8 GB é o suficiente.
+- Criar um novo disco rígido virtual (ou usar um existente);
+- Selecionar o tipo de arquivo de disco rígido, pode ser o "VirtualBox Disk Imagem" mesmo";
+- Deixar o armazenamento em disco rígido físico dinamicamente alocado;
+    - Se tiver certeza do tamanho que quer para o disco, pode deixar o tamanho fixo.
+- Conferir a localização do arquivo e separar pelo menos um 15 GB para a instalação do SO;
+- Aqui, a máquina já está criada;
+- Ir nas configurações da máquina, em "armazenamento" e "Controladora: IDE" selecionar a imagem do Ubuntu para ele ser instalado quando inicializado;
+- Ainda nas configurações, ir em "rede" e deixar a placa de rede como "bridge";
+- Feito isso, pode-se dar OK e iniciar a máquina;
+- Na instalação;
+    - Escolher o idioma e clicar em "Instalar o Ubuntu";
+    - Selecionar o idioma do teclado ("atenção" é uma boa palavra para isso);
+    - Em "atualizações e outros aplicativos", selecionar o tipo de instalação e as outras opções desejadas;
+    - No tipo de instalação, selecionar "apagar disco e reinstalar o ubuntu" (como está instalando em uma VM e é para um uso específico, não é necessário particionar);
+    - Selecionar o fuso horário;
+    - Inserir informações de usuário;
+    - Clicar em reiniciar;
+    - Dar enter para "remover o meio de instalação e reiniciar.
+- Ir no terminal e executar "sudo apt update" e, depois, "sudo apt upgrade";
+- Instalar utilitários: "sudo apt install build-essential gcc make perl dkms curl";
+- Instalar o git: "sudo apt install git";
+- Para redimensionar a tela.
+    - Ir em "Dispositivos" -> "Inserir imagem de CD dos adicionais para Convidado";
+    - Clicar em "Executar" na mensagem;
+    - Reiniciar a máquina e verificar que ela muda o tamanho.
+
+### Configurando o servidor
 
 - Veremos a mesma coisa que fizemos com o Google Cloud Platform, mas em uma VM Ubuntu;
 - Para acessar o servidor em uma máquina virtual usando o computador, a rede da máquina precisa estar em modo "bridge";
