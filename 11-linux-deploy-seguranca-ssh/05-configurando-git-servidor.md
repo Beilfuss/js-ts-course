@@ -8,5 +8,9 @@
 - Ignorar alguns arquivos;
     - `nano .gitignore`;
     - Adicionar na pasta o arquivo "node_modules" e o ".env";
-    - Salvar e sair.
-- 
+    - Salvar e sair;
+    - `ls -la` para verificar o arquivo ".gitignore".
+- Adicionar os arquivos do projeto no Git;
+    - `git add .`
+    - `git commit -am 'commit inicial'`
+- Agora, já temos o git configurado na máquina hospedeira;
