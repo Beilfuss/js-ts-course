@@ -14,3 +14,7 @@
     - `git add .`
     - `git commit -am 'commit inicial'`
 - Agora, já temos o git configurado na máquina hospedeira;
+- Neste ponto, precisamos criar um repositório no servidor para mandar esses arquivos para lá
+    - Para isso, vamos entrar no servidor usando `ssh [usuario]@[ip do servidor]`;
+    - Na home do servidor, criar um repositório para o projeto: `mkdir repo-agenda`;
+        - Criar, também, uma pasta para guardar os contatos (arquivos da agenda): `mkdir agenda`;
