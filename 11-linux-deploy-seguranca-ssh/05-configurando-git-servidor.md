@@ -25,4 +25,14 @@
     - Criar um repositório do git: `git init`;
     - Adicionar um repositório remoto (que na verdade está no mesmo servidor): `git remote add agenda /home/matheus/repo-agenda`;
         - Normalmente se usa `git remote add origin /home/matheus/repo-agenda` ("origin" como nome do repositório).
-     e adicionar o repositório "repo-agenda" à pasta "agenda"
+- Agora, vamos adicionar o repositório que criamos no servidor no nosso computador;
+    - No computador host, executar `git remote add agenda [usuário]@[ip]:[nome do repositório]` --> "git remote add [nome do repositório no host] [endereço do repositório]:[nome do repositório no servidor]";
+    - Com o repositório adicionado, enviar os arquivos para o repositório remoto "agenda" o que tiver no repositório main: `git push agenda main`;
+    - Agora, ir ao repositório remoto, na pasta agenda, e executar `git pull agenda main`;
+    - Nesse momento, tem-se todos os arquivos do projeto agenda no servidor;
+    - Sempre que fizer alterações no projetoagenda no computador host, é preciso executar:
+        - `git add .`;
+        - `git commit -am '[mensagem que quer adicionar]'`;
+        - `git push agenda main`.
+- As edições enviadas vão estar no repositório "repo-agenda". Para os commits irem para a **pasta de produção**, agenda, é preciso ir na pasta agenda e executar `git pull agenda main`;
+- Com isso, já movemos os arquivos com sucesso para o servidor.
