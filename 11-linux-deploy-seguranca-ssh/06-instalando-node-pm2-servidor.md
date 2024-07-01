@@ -17,3 +17,22 @@
                 - Para exibir esses dados de novo, pode-se usar `pm2 list`.
     - Se tivesse outro projeto, teria que mudar a porta (dois projetos não podem usar a mesma porta). Aqui, estamos usando a porta 3000.
         - Poderia usar uma variável dinâmica no .env para isso.
+    - Criar o arquivo ".env";
+        - Na pasta agenda, executar `nano .env`;
+        - Colar o conteúdo de ".env" para dentro desse novo ".env" e salvar.
+    - Executar `pm2 start agenda`;
+        - Para parar, `pm2 stop agenda`.
+    - Para subir a aplicação quando o servidor é reiniciado;
+        - Executar `pm2 startup`;
+        - Copiar e executar o comando que atualiza o PATH;
+        - Com isso, para salvar a lista de processos quando reiniciar o servidor, basta executar `pm2 save`;
+        - Para remover o script da inicialização, basta executar `pm2 unstartup systemd`.
+    - Para testar se o projeto está online: `curl http://localhost:3000`;
+        - Se der "conection refused", pode ser porque o ip do servidor não está permitido no MongoDB Atlas (em Network Access);
+        - Para deixar o BD ser acessado somente pelo servidor.
+            - Copiar o IP do servidor;
+            - Adicionar ele na "whitelist" de Network Access do MongoDB Atlas;
+            - Com isso, só quem pode acessar essa base de dados os IPs que se configurou;
+            - O problema é que, se não tiver um IP fixo, é mais fácil adicionar todas as redes.
+                - Isso enquanto estiver desenvolvendo. Quando fizer o deploy, coloca o ip do servidor e tira o ip de todas as redes, para só o servidor acessar a base de dados.
+        
