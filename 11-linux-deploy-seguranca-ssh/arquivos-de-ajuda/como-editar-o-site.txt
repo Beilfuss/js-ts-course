@@ -1,0 +1,11 @@
+# Editando o site - Pull fora de fora do servidor
+# Ex.:
+# ssh curso.otaviomiranda.com.br 'git -C /home/luizotavio/agenda/ pull agenda master'
+ssh <ipdoservidor> 'git -C <# Integração continua - Pull fora de fora do servidor
+# Ex.:
+# ssh curso.otaviomiranda.com.br 'git -C /home/luizotavio/agenda/ pull agenda master'
+
+git add .
+git commit -am 'Descrevo minha edição'
+git push agenda master
+ssh <ipdoservidor> 'git -C </caminho/da/pasta/do/projeto/> pull <remote> <branch>'

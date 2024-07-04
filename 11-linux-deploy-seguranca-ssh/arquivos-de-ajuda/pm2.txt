@@ -1,0 +1,4 @@
+sudo npm i -g pm2
+pm2 start /home/foreb/agenda/server.js --name agenda
+pm2 list
+pm2 startup

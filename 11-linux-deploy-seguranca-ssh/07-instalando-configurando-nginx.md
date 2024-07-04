@@ -7,3 +7,16 @@
     - `sudo apt install nginx`;
     - Verificar se o NGINX já foi iniciado: `sudo systemctl status nginx`;
     - Se ele já estiver ativo, já deve haver uma página de boas vindas do NGINX acessando o IP do servidor.
+- Vamos configurar o servidor com HTTP, para caso não tiver domínio e quiser rodar no IP do servidor, e vamos configurar o servidor com HTTPS, para caso tiver domínio;
+- A configuração do servidor NGINX para HTTP está disponível em "arquivos-de-ajuda/nginx-HTTP.txt";
+    - Se estiver usando domínio, deve-se incluir o domínio nesse arquivo;
+    - Se estiver usando o IP, deve-se incluir o IP nesse arquivo;
+    - Importante, também, trocar a porta, se for necessário (se houver outros projetos no mesmo servidor).
+- Para configurar o servidor com HTTP;
+    - Copiar o conteúdo do arquivo "nginx-HTTP.txt" com as devidas modificações feitas;
+    - Ir no servidor e executar: `sudo nano /etc/nginx/sites-enabled/[nome do domínio ou qualquer coisa]`;
+    - Salvar e sair;
+    - Ir na pasta "sites-enabled": `cd /etc/nginx/sites-enabled`;
+    - Apagar a pasta "default": `sudo rm default`;
+    - Para confirmar que tudo está funcionando: `sudo nginx -t`;
+    - Reiniciar o nginx: `sudo systemctl restart nginx`.

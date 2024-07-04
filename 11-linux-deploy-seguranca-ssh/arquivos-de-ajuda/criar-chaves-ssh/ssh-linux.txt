@@ -1,0 +1,3 @@
+# Chaves SSH no Linux
+ssh-keygen -f ~/.ssh/nome_da_chave -t rsa -b 4096
+cat ~/.ssh/nome_da_chave.pub
