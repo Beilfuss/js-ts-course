@@ -15,5 +15,6 @@
 - [x] Nodemon;
 - [x] Express;
 - [x] MongoDB;
-- [ ] Google Cloud Platform;
+- [x] Google Cloud Platform;
+- [x] SSH;
 - (Loading...).
