@@ -20,3 +20,17 @@
     - Apagar a pasta "default": `sudo rm default`;
     - Para confirmar que tudo está funcionando: `sudo nginx -t`;
     - Reiniciar o nginx: `sudo systemctl restart nginx`.
+        - Mesma coisa que `sudo service restart nginx`.
+- Para configurar o servidor com HTTPS;
+    - No arquivo "letsencrypt" da pasta "arquivos-de-ajuda" tem os comandos para essa parte;
+        - Executar um por um.
+    - **Para isso funcionar, é preciso ter um domínio**;
+    - No quarto comando, subsituir pelo domínio que se tem: `sudo certbot certonly --standalone -d [meu domínio]`.
+        - Se precisar renovar o certificado, vai pedir isso após a execução do comando.
+    - Após todos os comandos do arquivo "letsencrypt.txt", ir no arquivo "nginx-HTTPS.txt" e substituir os domínios lá pelo próprio domínio.
+        - Mudar a porta nesse arquivo também, se trocar ela.
+    - Copiar o conteúdo do arquivo "nginx-HTTPS.txt" para o arquivo do domínio em "etc/nginx/sites-enabled";
+    - Reiniciar o nginx: `sudo systemctl restart nginx`.
+- Com isso, tem-se as portas 80 e 443 funcionando, com HTTPS e conexão segura.
+- Para renovar o certificado: `sudo certbot renew`;
+- Com isso, já temos um servidor funcional.
