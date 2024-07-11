@@ -5,3 +5,25 @@
     - Nessa seção, faremos apenas o back-end.
 - Vamos utilizar o MariaDB;
     - Mas, da forma que vamos fazer, funcionaria com MySQL, SQLite, Postgres etc.
+- Acessar o servidor;
+    - Comandos rodados nessa parte no arquivo "instala-docker-ce-e-mais.txt";
+    - Remover versões anteriores do Docker (se houver);
+    - Executar `sudo apt update` e `sudo apt upgrade`, se necessário;
+    - Instalar pacotes necessários para o Docker;
+    - Adicionar o repositório do Docker no servidor;
+    - `sudo apt update`;
+    - Instalar o Docker;
+    - Criar o container do MariaDB;
+        - "docker run" cria um container com a imagem do MariaDB;
+        - "restart always" reinicia o container toda vez que reiniciar o servidor;
+        - "bdmariadb1" é o nome do BD. Pode-se modificar esse nome;
+        - "3306:3306" significa que as requisições que chegarem na porta 3306 vão ser direcionadas para a porta 3306, que é a porta padrão do MySQL;
+        - Em "MYSQL_ROOT_PASSWORD", colocar a senha que quiser;
+        - Executar `sudo docker ps` para ver se o servidor foi iniciado;
+            - Para parar o servidor/container: `sudo docker stop [nome do BD]`. Nesse caso, `sudo docker stop bdmariadb1`;
+            - Para remover: `sudo docker rm [nome do container]`.
+        - Criar uma regra de firewall para permitir a porta 3306 (para ser possível acessar o servidor fora dele).
+            - Permitir a conexão SSH no Firewall, se necessário.
+- Testar o acesso ao servidor usando o MySQL Workbench (ou DBeaver);
+    - Configurar o MariaDB e testar a conexão.
+- Instalar o Insomnia para testar as requisições.
