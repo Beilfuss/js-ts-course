@@ -13,4 +13,23 @@
     - Depois, ir em "settings", "Open Settings (JSON)" e adicionar:
         - "eslint.validate": [ "javascript" ];
         - "editor.codeActionsOnSave": { "source.fixAll.eslint": true };
+- Para desativar um erro do Eslint, pode-se declarar como comentário:
+    - Acima da linha: `// eslint-disable-next-line`;
+    - Na frente da linha: `// eslint disable-line`;
+    - Isso não é muito recomendado.
+- Extensão útil: "Bracket Pair Colorizer".
 
+## Nota do professor
+
+### Atualização Eslint
+
+A configuração de "eslint.autoFixOnSave" no VSCode não funciona mais para que o eslint faça correção do código automaticamente.
+
+Utilize a seguinte configuração ao invés de "eslint.autoFixOnSave":
+
+```
+"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
+},
+```
