@@ -3,6 +3,8 @@ import express from 'express';
 import homeRoutes from './src/routes/homeRoutes';
 dotenv.config();
 
+import './src/database'; // importa o arquivo de conexão com o banco de dados
+
 class App {
   constructor() {
     this.app = express();
