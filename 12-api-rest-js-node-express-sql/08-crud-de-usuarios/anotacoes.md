@@ -13,7 +13,9 @@
     - Update;
       - Criar o método em UserController.js e uma rota em userRoutes.js;
       - Criar uma requisição PUT "Update" no Insomnia para testar isso (com: base_url/users/[id de um usuário]).
-        - Passando "base_url/users/1" sem um JSON deve retornar o erro "ID não enviado";
-
-        - Passando "base_url/users/1", deve retornar o usuário cadastrado com id "1". IDs não cadastrados devem retornar "null".
+        - Passando "base_url/users/1" com um JSON sem e-mail ou com e-mail errado deve retornar "e-mail inválido". Passando um JSON com e-mail e nome válidos, deve retornar o aluno atualizado.
     - Delete.
+      - Criar o método em UserController.js e uma rota em userRoutes.js;
+      - Criar uma requisição DELETE "Delete" no Insomnia para testar isso (com: base_url/users/[id de um usuário]).
+        - Passando "base_url/users/1", com um ID que existe, deve retornar o usuário do ID e apagar ele. Enviando a URL com um ID não existente na base deve retornar o erro "Usuário não existe".
+- Com isso, concluímos com sucesso todos os métodos de uma API REST com CRUD (cria, mostra todos, mostra um, atualiza um e deleta um). Agora, podemos fazer o login para restringir essas operações no sistema.
