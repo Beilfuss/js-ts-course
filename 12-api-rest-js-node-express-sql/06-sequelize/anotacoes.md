@@ -31,4 +31,5 @@
     - Com isso, deve-se ter as tabelas "alunos" e "SequelizeMeta" no DB (basta atualizar o DBeaver).
 - Criar o model de aluno ("Aluno.js" em "models");
 - Criar um arquivo "index.js" ou "connection.js" em "database";
-- Importar o arquivo de conexão com o banco de dados no "app.js".
+- Importar o arquivo de conexão com o banco de dados no "app.js";
+- Criar uma requisição "GET" na URL base no Insomnia para testar o que foi feito.
