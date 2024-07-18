@@ -19,6 +19,7 @@
     "sucrase": "^3.35.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mariadb": "^3.3.1",
