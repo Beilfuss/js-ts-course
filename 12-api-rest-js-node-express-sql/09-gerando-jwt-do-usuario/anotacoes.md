@@ -1,0 +1,21 @@
+# Gerando o JWT do usuário
+
+- Vamos logar o usuário usando tokens, JSON Web Token (JWT);
+  - A diferença do JWT para sessões é que, ao invés do servidor gerenciar a sessão, o cliente vai ter uma chave e a cada momento que ele precisar acessar uma página que precisa de login, ele envia a chave, confere-se se é a chave dele e, se der certo, deixa passar.
+- Primeiro, ir no ".env" e adicionar nele:
+  - token_secret=[senha do token]
+  - token_expiration=[tempo que o token vai levar para expirar, geralmente em dias]
+    - Quanto mais tempo, menos seguro.
+- Instalar o JWT;
+  - Na pasta raiz do projeto, executar `npm i jsonwebtoken`.
+- Criar um controller que controla os tokens (TokenController);
+- Criar uma rota para criar os tokens;
+- Registrar a rota de tokens em "app.js";
+- Criar uma pasta "Tokens" no Insomnia para testar isso;
+  - Criar uma requisição POST "Store" com "base_url/tokens/".
+- Criar um método "passwordIsValid" em "User.js" usando bcrypt.js;
+- Retornar um token para o usuário;
+  - Importar o JWT em "TokenController.js";
+  - Usar ele com o id e senha do usuário para retornar um JWT.
+- Sempre que o usuário logado fizer uma requisição para uma página que precisa de login, ele precisa enviar o token através do header da requisição.
+- Falta só o middleware de autenticação, para checar se o usuário está mandando o token gerado pelo sistema nas requisições que requerem o token.
