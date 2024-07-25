@@ -1,0 +1,108 @@
+# - Certificar-se que seu servidor está ligado
+# - Instalar pacotes
+
+npm i
+
+# - Mover e corrigir app.js e server.js para ./src
+
+# - Fazer a "build" da aplicação com o sucrase:
+# - Scripts para package.json:
+# - https://github.com/alangpierce/sucrase
+
+"build": "sucrase ./src -d ./dist --transforms imports",
+"start": "node dist/server.js"
+
+# Alterar a url da aplicação (detalhado na aula)
+
+# Execute a build
+
+npm run build
+npm start
+
+# Teste para ver se está acessível
+
+# Inicie o git dentro da pasta
+
+# NO SEU COMPUTADOR
+git init
+git config user.name 'Seu nome'
+git config user.email 'Seu e-mail'
+git add .
+git commit -am 'Iniciando a aplicação'
+
+# NO SERVIDOR
+# Criando as pastas
+mkdir api
+mkdir repo-api
+
+# Criando o repositório
+cd repo-api
+git init --bare
+cd ~
+
+# Adicionando o repositório na pasta api
+cd api
+git init
+git config user.name 'Seu nome'
+git config user.email 'Seu e-mail'
+git add .
+git commit -am 'Inicial'
+git remote add origin /home/seu_usuario/repo-api
+cd ~
+
+# NO SEU COMPUTADOR
+git remote add origin ip_do_servidor:repo-api
+git push origin master -u
+
+# NO SERVIDOR (pasta api)
+git pull origin master
+mkdir uploads
+cd uploads
+mkdir images
+cd ~
+
+# IMPORTANTE:
+# O arquivo .env precisa ficar na raíz da sua aplicação
+# (pasta inicial)
+nano .env
+
+# Cole o seguinte no arquivo .env
+DATABASE=escola
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=???????????????
+
+TOKEN_SECRET=???????????????
+TOKEN_EXPIRATION=7d
+
+APP_PORT=3001
+APP_URL=???????????????
+
+# Substitua ??????????????? para suas configs
+# Pressione CTRL + O, ENTER, CTRL + X
+
+# Instale os pacotes
+cd ~
+npm i
+
+# Ativando a aplicação no PM2
+pm2 start /home/seu_usuario/api/dist/server.js --name=api
+
+# Off (caso aconteça erros, remova o dotenv de app.js) e use o comando
+pm2 start /home/seu_usuario/api/dist/server.js --name=api --node-args="--require 'dotenv/config'"
+
+# Para listar
+pm2 ls
+
+# PARA CONFIGURAR O NGINX, USE O OUTRO ARQUIVO DESTA AULA
+# Depois
+sudo systemctl stop nginx
+
+# Instalando SSL
+sudo certbot certonly --standalone -d seu.dominio.com.br
+
+# Depois
+sudo systemctl start nginx
+
+# Configure o insomnia

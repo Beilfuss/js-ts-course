@@ -1,0 +1,28 @@
+server {
+  listen 80;
+  listen [::]:80;
+  server_name TROQUE_PARA_SEU_DOMINIO_OU_IP;
+
+  location / {
+    proxy_pass http://localhost:3001;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+
+  location ~ /\.ht {
+    deny all;
+  }
+
+  location ~ /\. {
+    access_log off;
+    log_not_found off;
+    deny all;
+  }
+
+  access_log off;
+  #access_log  /var/log/nginx/TROQUE_PARA_SEU_DOMINIO_OU_IP-access.log;
+  error_log /var/log/nginx/TROQUE_PARA_SEU_DOMINIO_OU_IP-error.log;
+}
