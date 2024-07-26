@@ -58,7 +58,7 @@
     - Para confirmar: `curl http://localhost:3001`.
       - Se aparecer "Index", a aplicação está rodando corretamente no servidor.
   - Configurar o nginx para fazer um proxy reverso para que quando alguém acessar o domínio na porta 80, o nginx redirecionar para a porta 3001 dentro do servidor.
-    - Executar `cd/etc/nginx/sites-enabled/`;
+    - Executar `cd /etc/nginx/sites-enabled/`;
     - Executar `sudo cp [nome do arquivo de configuração do nginx HTTP usado no outro deploy (da agenda)] [nome do novo arquivo]`;
         - Aqui, pode ser o domínio ou qualquer outra coisa (nesse caso, usei "api_rest").
     - Nesse arquivo, adicionar o conteúdo do arquivo "HTTP-curso1.otaviomiranda.com.br" (que está dentro da pasta "config_nginx") no arquivo criado. Só modificar os campos necessários;
@@ -101,3 +101,4 @@
       - `git pull`; (se tiver configurado)
       - `pm2 restart api`.
   - Ir no ambiente de "Prod" do Insomnia e testar.
+- Com a aplicação no ar, pode-se reiniciar o servidor que ela deve voltar normalmente.
