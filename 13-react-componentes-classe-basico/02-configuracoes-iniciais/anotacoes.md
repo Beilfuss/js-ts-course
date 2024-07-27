@@ -1,0 +1,29 @@
+# Configurações iniciais
+
+- Iniciar a aplicação com `npm start`;
+- Vamos eliminar várias coisas que vieram prontas;
+    - Na pasta "src";
+        - O arquivo "index.js" é o arquivo de entrada do Webpack, não pode ser excluído;
+        - "App.js" e "App.css" também são necessários;
+        - O resto, pode excluir. 
+    - Na pasta "public";
+        - Deixar apenas o arquivo "index.html".
+    - No arquivo "src/index.js";
+        - "react" está sendo importado porque é necessário para usar JSX;
+            - "JSX" é o "App.js", componente do React;
+            - JSX é idêntico ao HTML. JSX é renderizado pelo "ReactDOM";
+            - React é JavaScript com JSX dentro, que é semelhante ao HTML (não é HTML, mas é semelhante).
+        - Apagar o import do "index.css" e do "serviceWorker" (isso é relacionado a pwa, o que não vamos ver nesse projeto);
+        - Apagar o resto abaixo de "ReactDOM".
+    - No arquivo "src/App.js";
+        - Apagar tudo nesse arquivo para criar um novo componente;
+        - Para isso, sempre é preciso importar o React, para escrever JSX (mistura de JS com HTML);
+        - Fazer um componente sem estado: uma função normal que retorna um JSX;
+        - Exportar o componente para ele funcionar.
+    - No arquivo "public/index.html";
+        - Deixar apenas o necessário do HTML.
+    - No arquivo "src/App.css";
+        - Apagar tudo.
+- O componente que criamos passa pelo Webpack que vai retornar JS, HTML e CSS que o navegador "entenda", porque o padrão não "entende" JSX.
+- Importar o App.css no App.js.
+    - Zerar o CSS e deixar ele padrão.
