@@ -15,7 +15,7 @@ export default class Main extends Component {
 
     render() {
 
-        const { novaTarefa } = this.state; // Destructuring. Equivale a const novaTarefa = this.state.novaTarefa;
+        // const { novaTarefa } = this.state; // Destructuring. Equivale a const novaTarefa = this.state.novaTarefa;
 
         return (
             <div className="main"> {/* "className" porque "class" é uma palavra reservada do JS */} 
