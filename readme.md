@@ -6,6 +6,7 @@
 ## Tecnologias já estudadas:
 
 - [x] JavaScript;
+- [x] Git;
 - [x] Axios;
 - [x] Babel;
 - [x] Core-js;
@@ -16,5 +17,22 @@
 - [x] Express;
 - [x] MongoDB;
 - [x] Google Cloud Platform;
+- [x] VirtualBox;
 - [x] SSH;
+- [x] EJS;
+- [x] Bootstrap;
+- [x] Node.js;
+- [x] PM2;
+- [x] Nginx;
+- [x] Eslint;
+- [x] Sucrase;
+- [x] Bcrypt.js;
+- [x] JWT;
+- [x] Dotenv;
+- [x] Sequelize;
+- [x] Multer;
+- [x] MariaDB;
+- [x] DBeaver;
+- [x] Firewall;
+- [x] ReactJS;
 - (Loading...).
