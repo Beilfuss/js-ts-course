@@ -1,9 +1,9 @@
-import User from "../models/User";
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
 class UserController {
   async store(req, res) {
     try {
-      const novoUser = await User.create(req.body);
+      const novoUser = await _User2.default.create(req.body);
       const { id, nome, email } = novoUser;
       return res.json({ id, nome, email });
     } catch (e) {
@@ -16,7 +16,7 @@ class UserController {
   // Index
   async index(req, res) { // async porque vai fazer uma consulta no banco de dados e precisa esperar ele retornar
     try{
-      const users = await User.findAll({ attributes: ['id', 'nome', 'email'] }); // busca todos os usuários na base de dados
+      const users = await _User2.default.findAll({ attributes: ['id', 'nome', 'email'] }); // busca todos os usuários na base de dados
       return res.json(users); // retorna todos os usuários
     // eslint-disable-next-line no-unused-vars
     } catch (e) {
@@ -27,7 +27,7 @@ class UserController {
   // Show
   async show(req, res) {
     try{
-      const user = await User.findByPk(req.params.id); // busca o usuário pelo id passado na URL
+      const user = await _User2.default.findByPk(req.params.id); // busca o usuário pelo id passado na URL
 
       const { id, nome, email } = user; // desestruturação para pegar somente os campos que queremos retornar
 
@@ -43,7 +43,7 @@ class UserController {
     try{
       const { id } = req.params; // pega o id passado na URL
 
-      const user = await User.findByPk(id); // busca o usuário pelo id passado na URL
+      const user = await _User2.default.findByPk(id); // busca o usuário pelo id passado na URL
 
       console.log('USER QUE CHEGOU', user);
 
@@ -71,7 +71,7 @@ class UserController {
     try{
       const { id } = req.params; // pega o id passado na URL
 
-      const user = await User.findByPk(id); // busca o usuário pelo id passado na URL
+      const user = await _User2.default.findByPk(id); // busca o usuário pelo id passado na URL
 
       if(!user) {
         return res.status(400).json({ // retorna um erro se o usuário não for encontrado
@@ -91,4 +91,4 @@ class UserController {
   }
 }
 
-export default new UserController(); // exporta a classe já instanciada
+exports. default = new UserController(); // exporta a classe já instanciada

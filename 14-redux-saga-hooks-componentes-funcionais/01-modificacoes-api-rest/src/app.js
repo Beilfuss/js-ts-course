@@ -3,14 +3,14 @@ import { resolve } from 'path';
 
 dotenv.config();
 
-import './src/database'; // importa o arquivo de conexão com o banco de dados
+import './database'; // importa o arquivo de conexão com o banco de dados
 
 import express from 'express';
-import homeRoutes from './src/routes/homeRoutes';
-import userRoutes from './src/routes/userRoutes';
-import tokenRoutes from './src/routes/tokenRoutes';
-import alunoRoutes from './src/routes/alunoRoutes';
-import fotoRoutes from './src/routes/fotoRoutes';
+import homeRoutes from './routes/homeRoutes';
+import userRoutes from './routes/userRoutes';
+import tokenRoutes from './routes/tokenRoutes';
+import alunoRoutes from './routes/alunoRoutes';
+import fotoRoutes from './routes/fotoRoutes';
 
 class App {
   constructor() {
@@ -22,7 +22,7 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use(express.static(resolve(__dirname, 'uploads'))); // define o diretório de arquivos estáticos
+    this.app.use('/images', express.static(resolve(__dirname, '..', 'uploads', 'images'))); // define o diretório de arquivos estáticos
   }
 
   routes() {
