@@ -30,7 +30,7 @@ class TokenController {
       expiresIn: process.env.TOKEN_EXPIRATION
     });
 
-    return res.json({ token }); // retorna um objeto com o token gerado para o usuário logado no sistema
+    return res.json({ token, user: { nome: user.nome, id, email } }); // retorna um objeto com o token gerado para o usuário logado no sistema
   }
 }
 
