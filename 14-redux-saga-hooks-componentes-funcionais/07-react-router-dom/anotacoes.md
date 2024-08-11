@@ -12,4 +12,8 @@
 
 ## Minhas anotações
 
+- Vamos ver sobre o roteamento no React;
+- Instalar o React Router DOM: `npm i react-router-dom`;
+  - Esse pacote vai ser o responsável por fazer o roteamento da aplicação. Assim como há roteamento no backend, há, também, roteamento no frontend, que é para onde a aplicação vai quando o usuário clicar em algum link;
+  - Desse modo, não vamos mais usar a tag "<a>" do HTML, e sim o link do React Router DOM.
 -
