@@ -1,16 +1,17 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import Login from "./pages/Login";
 import GlobalStyles from "./styles/GlobalStyles";
 import Header from "./components/Header";
+import Routes from './routes';
 
 function App() {
   return (
-    <>
+    <BrowserRouter> {/* BrowserRouter é o componente que vai encapsular todas as rotas */}
       <Header />
-      <Login />
+      <Routes />
       <GlobalStyles />
-    </>
+    </BrowserRouter>
   );
 }
 
