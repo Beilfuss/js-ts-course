@@ -8,4 +8,4 @@
     - Nessa rota:
       - Verificamos se o usuário está logado;
         - Se não estiver e rota for fechada, redireciona ele para a tela de login e envia a tela que o usuário estava.
-      -
+        - Se estiver logado, retorna a rota que o usuário quer acessar.

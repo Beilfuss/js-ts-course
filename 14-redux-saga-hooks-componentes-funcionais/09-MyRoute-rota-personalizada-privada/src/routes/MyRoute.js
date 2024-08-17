@@ -11,4 +11,6 @@ export default function MyRoute({ component: Component, isClosed, ...rest }) {
       />
     );
   }
+
+  return <Route {...rest} component={Component} />;
 }
