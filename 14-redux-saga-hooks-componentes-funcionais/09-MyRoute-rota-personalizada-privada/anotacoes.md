@@ -9,3 +9,10 @@
       - Verificamos se o usuário está logado;
         - Se não estiver e rota for fechada, redireciona ele para a tela de login e envia a tela que o usuário estava.
         - Se estiver logado, retorna a rota que o usuário quer acessar.
+      - Validar as propriedades recebidas no objeto que vem como parâmetro.
+        - Para isso, instalar o pacote "prop-types": `npm i prop-types`;
+        - Importar a biblioteca "prop-types" e fazer a validação.
+- Criamos uma nova rota utilizando a rota que vem do react-router-dom, o que substitui o "Route";
+  - Por isso, pode-se apagar o "Route" de "index.js" em "routes" e importar o novo componente criado.
+- Para fechar uma rota e redirecionar para o login, então, basta adicionar a propriedade "isClosed" nos parâmetros do componente de rota de uma determinada página;
+- Normalmente, para rotas privadas, utiliza-se o nome "privateRoute".
