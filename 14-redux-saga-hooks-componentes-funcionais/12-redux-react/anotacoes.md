@@ -20,3 +20,6 @@
   - Dentro do reducer, retorna-se ou o estado atual, que é o que já se tem, ou um novo estado;
   - Importar o "Provider" do react-redux e o "store" em "App.js" e envolver os componentes de App.js com a tag "Provider" para declarar que o estado desses componentes vem do "store";
   - Com isso, já se tem a configuração mínima do Redux.
+- Quando precisar manipular o estado do reducer, será preciso disparar uma ação;
+- Todos os reducers vão ouvir todas as ações disparadas. O desenvolver declara quais ações ele quer ouvir para executar uma manipulação de estado específica;
+-
