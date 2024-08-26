@@ -22,4 +22,4 @@
   - Com isso, já se tem a configuração mínima do Redux.
 - Quando precisar manipular o estado do reducer, será preciso disparar uma ação;
 - Todos os reducers vão ouvir todas as ações disparadas. O desenvolver declara quais ações ele quer ouvir para executar uma manipulação de estado específica;
--
+
