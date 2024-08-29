@@ -1,12 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'; // useDispatch é um hook que dispara uma action
 
 import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragrafo } from './styled';
 
 export default function Login() {
+  const dispatch = useDispatch();
+
   function handleClick(e) {
     e.preventDefault();
-    console.log('Botão clicado.');
+
+    dispatch({
+      type: 'BOTAO_CLICADO',
+      payload: 'Valor do input',
+    });
   }
 
   return (
