@@ -9,7 +9,7 @@
   - Assim, **quando fizer alguma requisição assíncrona**, pede primeiro para o saga. O saga, então, decide se a requisição foi um sucesso ou foi erro.
 - Toda requisição assíncrona (como uma promise) segue os seguintes passos:
   - Pede-se o dado para a promise (essa é a requisição);
-  - A promise executa e avisa de resolveu ou rejeitou.
+  - A promise executa e avisa se resolveu ou rejeitou.
 - Vamos implementar isso para entender como funciona;
   - Primeiro, vamos criar três types para três ações (success, request, failure);
     - Todas as requisições síncronas normalmente são assim.
@@ -17,4 +17,18 @@
   - Nas ações de failure e request, não se pode atualizar o estado porque não se sabe se vai haver algum dado;
     - As ações de request vão ser as que o saga vai escutar;
     - Retorna o estado atual nesse caso.
-  - Com isso, configuramos o reducer para receber isso. Vamos agora configurar as actions.
+  - Com isso, configuramos o reducer para receber isso. Vamos agora configurar as actions;
+    - Vamos disparar uma ação de request do Login;
+    - Atualizar as ações em "actions.js".
+  - Agora, vamos configurar o Saga;
+    - Criar um arquivo "sagas.js" em "examples" dentro de "modules";
+    - Instalar o Saga: `npm i redux-saga`;
+      - Tem outros middlewares que desempenham um papel específico.
+    - Nesse arquivo, inserir as configurações do Saga;
+    - Resumo dessa parte: no login, disparamos a action request; o saga ouve isso, faz a request e, se der certo dispara a action de sucesso e se der errado dispara a action de falha;
+    - Criar um arquivo "rootSaga.js" em módulos e configurar todas as sagas nele.
+  - Ir no index.js de "store" e configurar o middleware de sagas.
+- Assim, ao clicar no botão, ele vai enviar a requisição imediatamente e, depois de alguns segundos, vai resolver ou rejeitar a requisição.
+  - O estado só vai ser alterado quando tiver sucesso;
+  - Adicionamos um middleware para fazer uma requisição a uma API externa, o que não se sabe se vai dar erro ou retornar corretamente;
+  - Se der um erro, pode-se exibir um toast de erro, por exemplo. Isto é, é possível interceptar algo que está acontecendo com o middleware e falar para o usuário o que aconteceu.
