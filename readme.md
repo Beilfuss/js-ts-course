@@ -35,4 +35,5 @@
 - [x] DBeaver;
 - [x] Firewall;
 - [x] ReactJS;
+- [x] Styled-Components;
 - (Loading...).
