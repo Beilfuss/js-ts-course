@@ -1,0 +1,26 @@
+# Redux Persist
+
+- Vamos configurar o Redux Persist;
+- Se o usuário clica no botão, o estado vai para "clicado" e ele atualiza a página ou fecha o navegador e abre de novo, "perde-se" esse estado;
+  - Pode-se querer salvar dados do usuário depois do login, como o token, nome, e-mail dele etc.;
+  - Para fazer isso, poder-se-ia salvar no local storage (na mão);
+  - Mas, o Redux Persist faz isso automaticamente;
+  - O Redux Persist vai salvar as coisas no local storage do navegador, mas ele que escolhe onde, como etc.
+- Vamos configurar o Redux Persist;
+  - Instalar ele com `npm install redux-persist`;
+  - Ir em "stores", "modules" e criar um arquivo "reduxPersist.js";
+  - Configurar o Redux Persist nesse arquivo.
+- Configurado o Redux Persist;
+  - Ir no "index.js" de "store";
+  - Importar o redux-persist;
+  - Envolver o rootReducer com a função importada;
+  - Exportar a persistência do store.
+- Ir em "App.js";
+  - Importar o redux-persist;
+  - Importar o persistor;
+  - Envolver o que estiver dentro da tag "Provider" com a tag "PersistGate".
+- Verificar no inspencionar elemento, aba "Application", se está salvando no local storage.
+  - Agora, atualizando a página, o estado é mantido;
+  - Outra coisa que ele faz automaticamente é esperar a página recuperar os dados para depois renderizar a página.
+    - Isso é importante para evitar erros no carregamento da página.
+- Com isso, conseguimos salvar o token do usuário, por exemplo, para manter o usuário logado na aplicação.
