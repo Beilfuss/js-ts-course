@@ -37,4 +37,6 @@
 - [x] ReactJS;
 - [x] Styled-Components;
 - [x] React Router DOM;
+- [x] Router;
+- [x] History;
 - (Loading...).
