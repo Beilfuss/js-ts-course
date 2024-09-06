@@ -9,5 +9,4 @@
   - Registro;
   - Fotos.
 - Configurar o cabeçalho;
-- Configurar as rotas;
--
+- Configurar as rotas.
