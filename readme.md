@@ -39,4 +39,5 @@
 - [x] React Router DOM;
 - [x] Router;
 - [x] History;
+- [x] Redux;
 - (Loading...).
