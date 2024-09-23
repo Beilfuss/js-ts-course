@@ -23,7 +23,7 @@ export default function Alunos() {
       <AlunoContainer>
         {alunos.map(aluno => (
           <div key={String(aluno.id)}>
-            {aluno.nome}
+            <img src={alunos.Fotos[0].url} alt="" />
           </div>
         ))}
       </AlunoContainer>
