@@ -51,6 +51,10 @@ export default createGlobalStyle`
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
     background-color: ${colors.errorColor};
   }
+
+  body .Toastify .Toastify__toast-container .Toastify__progress-bar {
+    background: #fff;
+  }
 `;
 
 export const Container = styled.section`
