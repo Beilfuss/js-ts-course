@@ -55,6 +55,14 @@ export default createGlobalStyle`
   body .Toastify .Toastify__toast-container .Toastify__progress-bar {
     background: #fff;
   }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast {
+    color: #fff;
+  }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast-icon svg {
+    fill: #fff; /* Ícone em branco */
+  }
 `;
 
 export const Container = styled.section`
