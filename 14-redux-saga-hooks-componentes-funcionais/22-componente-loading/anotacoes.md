@@ -8,4 +8,3 @@
   - Enviar as alterações para o repositório remoto (lembrar de rodar "npm i" no repositório remoto também).
 - Adicionar um "overlay" nas páginas enquanto elas estiverem carregando.
   - Na pasta "components", criar uma pasta "Loading" para ser o componente que realiza isso.
-- PAREI EM 3:48
