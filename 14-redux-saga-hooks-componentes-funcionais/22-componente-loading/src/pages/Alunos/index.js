@@ -7,6 +7,8 @@ import { Container } from '../../styles/GlobalStyles';
 import { AlunoContainer, ProfilePicture } from './styled';
 import axios from '../../services/axios';
 
+import Loading from '../../components/Loading';
+
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]); // retorna um array com dois elementos, o primeiro é o estado e o segundo é a função que atualiza o estado
 
@@ -21,6 +23,7 @@ export default function Alunos() {
 
   return (
     <Container>
+      <Loading isLoading />
       <h1>Alunos</h1>
 
       <AlunoContainer>

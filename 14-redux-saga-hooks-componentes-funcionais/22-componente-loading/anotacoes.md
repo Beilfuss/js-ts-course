@@ -6,5 +6,6 @@
   - `npm i express-delay`;
   - Configurar o express-delay;
   - Enviar as alterações para o repositório remoto (lembrar de rodar "npm i" no repositório remoto também).
-- Adicionar um "overlay" nas páginas enquanto elas estiverem carregando.
+- Adicionar um "overlay" nas páginas enquanto elas estiverem carregando;
   - Na pasta "components", criar uma pasta "Loading" para ser o componente que realiza isso.
+- Importar o componente "Loading" em todas as páginas.
