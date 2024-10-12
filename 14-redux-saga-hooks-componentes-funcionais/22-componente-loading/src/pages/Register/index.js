@@ -47,12 +47,12 @@ export default function Register() {
         password,
       });
       toast.success('Você fez seu cadastro');
+      setIsLoading(false);
       history.push('/login');
     } catch (error) {
       const errors = get(error, 'response.data.errors', []);
 
       errors.map(error => toast.error(error)); // backend valida isso
-    } finally { // finally sempre vai ser executado, independente de erro ou sucesso
       setIsLoading(false);
     }
   }
